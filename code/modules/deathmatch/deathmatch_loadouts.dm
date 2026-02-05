@@ -368,10 +368,11 @@
 	l_hand = /obj/item/gun/ballistic/shotgun/hook
 	r_hand = /obj/item/gun/ballistic/shotgun/hook
 	uniform = /obj/item/clothing/under/costume/skeleton
-	suit = /obj/item/clothing/suit/hooded/cultrobes/eldritch
+	suit = /obj/item/clothing/suit/chaplainsuit/armor/heretic
 	mask = /obj/item/clothing/mask/gas/cyborg
 	shoes = /obj/item/clothing/shoes/sandal
 	belt = /obj/item/melee/cleric_mace
+	head = /obj/item/clothing/head/helmet/chaplain/heretic
 
 /datum/outfit/deathmatch_loadout/battler/cowboy
 	name = "Deathmatch: Cowboy"
@@ -849,7 +850,7 @@
 		/obj/item/etherealballdeployer,
 	)
 
-	mutations_to_add = list(/obj/item/dnainjector/shock) // pretend ethereals are interesting
+	mutations_to_add = list(/datum/mutation/shock) // pretend ethereals are interesting
 
 /datum/outfit/deathmatch_loadout/plasmamen
 	name = "Deathmatch: Plasmaman Species"
@@ -867,6 +868,7 @@
 	gloves = /obj/item/clothing/gloves/color/plasmaman/atmos
 	shoes = /obj/item/clothing/shoes/workboots
 	r_pocket = /obj/item/tank/internals/plasmaman/belt/full
+	internals_slot = ITEM_SLOT_RPOCKET
 
 	back = /obj/item/storage/backpack/industrial
 
@@ -890,7 +892,7 @@
 	head = /obj/item/clothing/head/soft/rainbow
 	glasses = null
 	ears = /obj/item/radio/headset
-	neck = /obj/item/clothing/neck/petcollar
+	neck = /obj/item/clothing/neck/petcollar/wearable
 	//suit
 	uniform = /obj/item/clothing/under/color/rainbow
 	l_pocket = /obj/item/toy/cattoy
@@ -1002,7 +1004,7 @@
 /datum/outfit/deathmatch_loadout/heresy/pre_equip(mob/living/carbon/human/user, visuals_only)
 	. = ..()
 	ADD_TRAIT(user, TRAIT_ACT_AS_HERETIC, REF(src))
-	user.AddElement(/datum/element/leeching_walk)
+	user.AddElement(/datum/element/rust_healing)
 
 	// Creates the knowledge as an isolated datum inside the target, allowing passive knowledges to work still.
 	for(var/datum/heretic_knowledge/knowhow as anything in knowledge_to_grant)
@@ -1016,9 +1018,9 @@
 	display_name = "Heretic Warrior"
 	desc = "Prove the furious strength of the Mansus!"
 
-	head = /obj/item/clothing/head/hooded/cult_hoodie/eldritch
+	head = /obj/item/clothing/head/hooded/cult_hoodie/eldritch/blade
 	neck = /obj/item/clothing/neck/heretic_focus
-	suit = /obj/item/clothing/suit/hooded/cultrobes/eldritch
+	suit = /obj/item/clothing/suit/hooded/cultrobes/eldritch/blade
 	suit_store = /obj/item/melee/sickly_blade/dark
 	uniform = /obj/item/clothing/under/color/darkgreen
 	id_trim = null
@@ -1041,8 +1043,7 @@
 	// I mean is it really that bad if they don't even know half this stuff is added to them.
 	// It's like, forbidden knowledge. It fits with the mansus theme - great excuse for poor design!
 	knowledge_to_grant = list(
-		/datum/heretic_knowledge/blade_grasp,
-		/datum/heretic_knowledge/blade_dance,
+		/datum/heretic_knowledge/limited_amount/starting/base_blade,
 		/datum/heretic_knowledge/blade_upgrade/blade,
 	)
 
@@ -1084,7 +1085,7 @@
 	)
 
 	knowledge_to_grant = list(
-		/datum/heretic_knowledge/cosmic_grasp,
+		/datum/heretic_knowledge/limited_amount/starting/base_cosmic,
 	)
 
 	spells_to_add = list(
@@ -1143,3 +1144,54 @@
 	shoes = /obj/item/clothing/shoes/bronze
 	l_pocket = /obj/item/reagent_containers/cup/beaker/synthflesh/named // they used to turn their dmg into tox with a spell. close enough
 	r_pocket = /obj/item/reagent_containers/cup/beaker/synthflesh/named
+
+// Sinok Maksima
+
+/datum/outfit/deathmatch_loadout/Sinok_Maksima
+	name = "Deathmatch: Sinok Maksima"
+	display_name = "Sinok Maksima"
+	desc = "Summon shit, bomb everyone, get fun. (Not for all)"
+
+	head = /obj/item/clothing/head/collectable/paper
+	suit = /obj/item/clothing/suit/wizrobe/paper
+	suit_store = null
+	uniform = /obj/item/clothing/under/color/white
+	id_trim = null
+	belt = null
+	gloves = null
+	shoes = /obj/item/clothing/shoes/sandal/magic
+	l_pocket = null
+	r_pocket = null
+
+// Sin Pikiti
+
+/datum/outfit/deathmatch_loadout/Sin_Pikiti
+	name = "Deathmatch: Sinok Pikiti"
+	display_name = "GLASS_CANNON"
+	desc = "Chaos Point Farm"
+
+	uniform = /obj/item/clothing/under/pants/camo
+	suit = /obj/item/clothing/suit/armor/reactive/psykerboost
+	suit_store = null
+	belt = /obj/item/storage/belt/security/webbing
+	ears = /obj/item/radio/headset/psyker
+	gloves = /obj/item/clothing/gloves/fingerless
+	head = null
+	shoes = /obj/item/clothing/shoes/jackboots
+	l_hand = /obj/item/storage/box/lethalshot
+	l_pocket = /obj/item/reagent_containers/hypospray/medipen/gore
+	r_pocket = /obj/item/reagent_containers/hypospray/medipen/gore
+	back = /obj/item/gun/ballistic/shotgun/automatic/dual_tube/bounty
+/datum/outfit/deathmatch_loadout/Sin_Pikiti/post_equip(mob/living/carbon/human/equipped, visuals_only = FALSE)
+	. = ..()
+	equipped.psykerize()
+
+//Zahar Anime
+
+/datum/outfit/deathmatch_loadout/Zahar_samurai
+	name = "Deathmatch: Samurai Zahar"
+	display_name = "Zahar_Anime"
+	desc = "Anime felinid based shit. Nobody like you."
+	species_override = /datum/species/human/felinid
+	l_hand = /obj/item/organ/cyberimp/arm/toolkit/shard/katana
+	uniform = /obj/item/clothing/under/costume/gi
