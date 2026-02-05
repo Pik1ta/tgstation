@@ -1184,9 +1184,6 @@
 	back = /obj/item/gun/ballistic/shotgun/automatic/dual_tube/bounty
 /datum/outfit/deathmatch_loadout/Sin_Pikiti/post_equip(mob/living/carbon/human/equipped, visuals_only = FALSE)
 	. = ..()
-	if(visuals_only)
-		return
-	
 	equipped.psykerize()
 
 //Zahar Anime
