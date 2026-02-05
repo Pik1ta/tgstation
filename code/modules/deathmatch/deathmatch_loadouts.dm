@@ -1144,3 +1144,57 @@
 	shoes = /obj/item/clothing/shoes/bronze
 	l_pocket = /obj/item/reagent_containers/cup/beaker/synthflesh/named // they used to turn their dmg into tox with a spell. close enough
 	r_pocket = /obj/item/reagent_containers/cup/beaker/synthflesh/named
+
+// Sinok Maksima
+
+/datum/outfit/deathmatch_loadout/Sinok_Maksima
+	name = "Deathmatch: Sinok Maksima"
+	display_name = "Sinok Maksima"
+	desc = "Summon shit, bomb everyone, get fun. (Not for all)"
+
+	head = /obj/item/clothing/head/collectable/paper
+	suit = /obj/item/clothing/suit/wizrobe/paper
+	suit_store = null
+	uniform = /obj/item/clothing/under/color/white
+	id_trim = null
+	belt = null
+	gloves = null
+	shoes = /obj/item/clothing/shoes/sandal/magic
+	l_pocket = null
+	r_pocket = null
+
+// Sin Pikiti
+
+/datum/outfit/deathmatch_loadout/Sin_Pikiti
+	name = "Deathmatch: Sinok Pikiti"
+	display_name = "GLASS_CANNON"
+	desc = "Chaos Point Farm"
+
+	uniform = /obj/item/clothing/under/pants/camo
+	suit = /obj/item/clothing/suit/armor/reactive/psykerboost
+	suit_store = null
+	belt = /obj/item/storage/belt/security/webbing
+	ears = /obj/item/radio/headset/psyker
+	gloves = /obj/item/clothing/gloves/fingerless
+	head = null
+	shoes = /obj/item/clothing/shoes/jackboots
+	l_hand = /obj/item/storage/box/lethalshot
+	l_pocket = /obj/item/reagent_containers/hypospray/medipen/gore
+	r_pocket = /obj/item/reagent_containers/hypospray/medipen/gore
+	back = /obj/item/gun/ballistic/shotgun/automatic/dual_tube/bounty
+/datum/outfit/deathmatch_loadout/Sin_Pikiti/post_equip(mob/living/carbon/human/equipped, visuals_only = FALSE)
+	. = ..()
+	if(visuals_only)
+		return
+	
+	equipped.psykerize()
+
+//Zahar Anime
+
+/datum/outfit/deathmatch_loadout/Zahar_samurai
+	name = "Deathmatch: Samurai Zahar"
+	display_name = "Zahar_Anime"
+	desc = "Anime felinid based shit. Nobody like you."
+	species_override = /datum/species/human/felinid
+	l_hand = /obj/item/organ/cyberimp/arm/toolkit/shard/katana
+	uniform = /obj/item/clothing/under/costume/gi
